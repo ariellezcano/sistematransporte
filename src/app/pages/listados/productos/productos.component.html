@@ -1,0 +1,70 @@
+<fieldset>
+    <h4>Listado de Productos</h4>
+    <hr>
+</fieldset>
+
+<!-- filtro buscar productos -->
+
+<label>
+    <a #collapse data-toggle="collapse" href="#collapseModelo" role="button" aria-expanded="false"
+        aria-controls="collapseModelo">
+        Filtro buscar productos
+    </a>
+</label>
+<div class="collapse" id="collapseModelo">
+    <div class="card card-body">
+        <app-filtroproducto (resultado)="encontrados($event)"></app-filtroproducto>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Producto</th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td scope="row">{{item.id}} </td>
+            <td>{{item.nombre}} </td>
+
+            <td>
+                <button data-toggle="modal" data-target="#modelId" type="button" (click)="seleccionado(item)"
+                    class="btn btn-primary">
+                    <i class="fas fa-edit    "></i>
+                </button>
+                &nbsp;
+                <button (click)="preEliminar(item)" type="button" class="btn btn-danger">
+                    <i class=" fas fa-trash "></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ABM Producto</h5>
+                <button #close type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-abmproducto [item]="item" (finalizado)="accion($event)">
+                </app-abmproducto>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modelId" (click)="nuevo()">
+    <i class="fas fa-plus    "></i>
+    Agregar
+</button>

@@ -1,0 +1,68 @@
+<form #f="ngForm" ngNativeValidate>
+    <div class="row" text="align-items-center">
+        <div class="col-lg-12">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese Nombre de la División</label>
+                    <input oninvalid="setCustomValidity('El campo nombre es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.nombre"
+                        class="form-control" id="ejemplo" type="text" placeholder="Ingrese nombre de la unidad"
+                        required="required" data-validation-required-message="Ingrese nombre de la división">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="control-group">
+                <div class="form-group controls">
+                    <label>
+
+                        <a #collapse data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                            aria-controls="collapseExample">
+                            Seleccione Unidad
+                        </a>
+                    </label>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <app-filtrounidad (resultado)="unidadesEncontradas($event)"></app-filtrounidad>
+                        </div>
+                    </div>
+                    <br>
+
+                    <select style="width: 100%;" required name="unidad" [(ngModel)]="item.unidad"
+                        [compareWith]="compareFnUni" class="form-control form-sm" required>
+                        <option *ngFor="let item of Unidades" [ngValue]="item">
+                            [{{item.nombre}}]
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="control-group">
+                <div class="form-group controls">
+                    <label>
+
+                        Ingrese nro. DNI del personal
+
+                    </label>
+
+                    <app-personal [dibujar]='item.personaReferente' (select)="personasencontradas($event)">
+                    </app-personal>
+
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div>
+            <div class="col-lg-6">
+                <button type="submit" (click)="accion(f)" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</form>

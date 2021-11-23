@@ -1,0 +1,77 @@
+<form #f="ngForm" ngNativeValidate>
+    <div class="row" text="align-items-center">
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Fecha de apertura de caja</label>
+                    <input oninvalid="setCustomValidity('El campo fecha es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.fechaApertura"
+                        class="form-control" id="ejemplo" type="date" placeholder="Ingrese fecha" required="required"
+                        data-validation-required-message="Ingrese fecha">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Fecha de cierre de caja</label>
+                    <input oninvalid="setCustomValidity('El campo fecha es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.fechaCierre"
+                        class="form-control" id="ejemplo" type="date" placeholder="Ingrese fecha" required="required"
+                        data-validation-required-message="Ingrese fecha">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Monto de la Caja</label>
+                    <input oninvalid="setCustomValidity('El campo monto es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.monto"
+                        class="form-control" id="ejemplo" type="number" placeholder="Ingrese monto" required="required"
+                        data-validation-required-message="Ingrese monto">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Saldo de la Caja</label>
+                    <input oninvalid="setCustomValidity('El campo monto es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.saldo"
+                        class="form-control" id="ejemplo" type="number" placeholder="Ingrese saldo" required="required"
+                        data-validation-required-message="Ingrese saldo">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls">
+                    <label>Seleccione División</label>
+
+                    <select name="Division" required [(ngModel)]="item.division" [compareWith]="compareFnDiv"
+                        class="form-control form-sm" required>
+                        <option *ngFor="let d of lstDivision" [ngValue]="d">[{{d.nombre}}]
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div>
+        <div class="col-lg-6">
+            <button type="submit" (click)="accion(f)" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>

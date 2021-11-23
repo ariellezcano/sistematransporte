@@ -1,0 +1,103 @@
+<form #form="ngForm" ngNativeValidate>
+
+    <!-- <div *ngIf="error.length>2" class="alert alert-danger" role="alert">
+        {{error}}
+    </div> -->
+
+    <div class="row" text="align-items-center">
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese fecha</label>
+                    <input oninvalid="setCustomValidity('El campo fecha de ingreso es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.fechaIngreso"
+                        class="form-control" name="nombre" id="nombre" type="date"
+                        placeholder="Ingrese fecha de ingreso" required="required" title="Ingrese fecha de ingreso">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese nro. DNI</label>
+                    <input oninvalid="setCustomValidity('El campo empleado es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.empleado" class="form-control"
+                        name="nombre" id="nombre" type="number" placeholder="Ingrese DNI del empleado"
+                        required="required" title="Ingrese empleado que trajo">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese id. móvil policial</label>
+                    <input oninvalid="setCustomValidity('El campo identificación pol. es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.vehiculo" class="form-control"
+                        name="nombre" id="nombre" type="text" placeholder="Identificación del móvil" required="required"
+                        title="Identificación del móvil">
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Diagnóstico</label>
+                    <input oninvalid="setCustomValidity('El campo diagnóstico es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.diagnostico"
+                        class="form-control" name="nombre" id="nombre" type="text" placeholder="Ingrese diagnóstico"
+                        required="required" title="Ingrese diagnóstico">
+                </div>
+            </div>
+        </div> -->
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Kilometraje de ingreso</label>
+                    <input oninvalid="setCustomValidity('El campo diagnóstico es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.kmIngresaVehiculo"
+                        class="form-control" name="nombre" id="nombre" type="number" placeholder="Ingrese kilometraje"
+                        required="required" title="Ingrese kilometraje">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Reparación Interna</label>
+                    <label class="switch">
+                        <input [(ngModel)]="item.interna" type="checkbox" checked>
+                        <span class="slider round"></span>
+                        <span class="absolute-no">NO</span>
+                    </label>
+                    <!-- <input oninvalid="setCustomValidity('El campo Reparacion es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.interna" class="form-control"
+                        name="nombre" id="nombre" type="checkbox" placeholder="" required="required"
+                    title="Interna o Externa"> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Observaciones</label>
+                    <input oninvalid="setCustomValidity('El Observaciones es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.observacion"
+                        class="form-control" name="nombre" id="nombre" type="text"
+                        placeholder="Ingrese las observaciones del vehiculo" required="required"
+                        title="Ingrese observaciones del vehículo">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <br>
+            <button type="submit" (click)="accion(form)" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>

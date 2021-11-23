@@ -1,0 +1,68 @@
+<fieldset>
+    <h4>Listado Caja Chica</h4>
+    <hr>
+</fieldset>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha de apertura</th>
+            <th>División</th>
+            <th>Monto</th>
+            <th>Saldo</th>
+            <th>Fecha de cierre</th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td scope="row">{{item.id}} </td>
+            <td>{{item.fechaApertura|date: 'dd/MM/yyyy'}} </td>
+            <td>{{item.division.nombre}} </td>
+            <td>{{item.monto}} </td>
+            <td>{{item.saldo}} </td>
+            <td>{{item.fechaCierre|date: 'dd/MM/yyyy' }} </td>
+
+            <td>
+                <button tooltip="Gestionar receta " placement="left" show-delay="500"
+                    [routerLink]="['/movimiento',item.id]" type="button" class="btn btn-outline-info btn-sm">
+                    <i class="fas fa-user-lock"></i>
+                </button>
+                &nbsp;
+                <button data-toggle="modal" data-target="#modelId" type="button" (click)="seleccionado(item)"
+                    class="btn btn-warning">
+                    <i class="fas fa-user-lock"></i>
+                </button>
+                &nbsp;
+                <button (click)="preEliminar(item)" type="button" class="btn btn-danger">
+                    <i class=" fas fa-trash "></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ABM Caja Chica</h5>
+                <button #close type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-abmcajachica [item]="item" (finalizado)="accion($event)">
+                </app-abmcajachica>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modelId" (click)="nuevo()">
+    <i class="fas fa-plus    "></i>
+    Agregar
+</button>

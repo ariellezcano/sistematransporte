@@ -1,0 +1,133 @@
+<form #form="ngForm" ngNativeValidate>
+
+    <!-- <div *ngIf="error.length>2" class="alert alert-danger" role="alert">
+        {{error}}
+    </div> -->
+    <div class="row" text="align-items-center">
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese fecha ingreso</label>
+                    <input oninvalid="setCustomValidity('El campo fecha es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.fechaIngreso"
+                        class="form-control" name="nombre" id="fecha" type="date" placeholder="Ingrese fecha"
+                        required="required" title="Ingrese fecha de ingreso">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese nombre del Repuestos</label>
+                    <input oninvalid="setCustomValidity('El campo nombre es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.nombre" class="form-control"
+                        name="nombre" id="nombre" type="text" placeholder="Ingrese nombre del repuesto"
+                        required="required" title="Ingrese nombre del repuesto">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese nro. de orden de compra</label>
+                    <input oninvalid="setCustomValidity('El campo stock es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.nroOrdenCompra"
+                        class="form-control" name="nombre" id="numero" type="text"
+                        placeholder="Ingrese número orden de compra" required="required"
+                        title="Ingrese orden de compra">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese precio del repuesto</label>
+                    <input oninvalid="setCustomValidity('El campo precio es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.precio" class="form-control"
+                        name="nombre" id="precio" type="text" placeholder="Ingrese precio del repuesto"
+                        required="required" title="Ingrese precio del repuesto">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese cantidad (stock)</label>
+                    <input oninvalid="setCustomValidity('El campo stock es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.stock" class="form-control"
+                        name="nombre" id="stock" type="number" placeholder="Ingrese stock del repuesto"
+                        required="required" title="Ingrese cantidad del repuesto">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ubicación del repuesto</label>
+                    <input oninvalid="setCustomValidity('El campo ubicación es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.ubicacion" class="form-control"
+                        name="nombre" id="ubicacion" type="text" placeholder="Ingrese ubicación" required="required"
+                        title="Ingrese ubicación">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls">
+                    <label>Seleccione proveedor del repuesto</label>
+
+                    <select name="proveedor" required [(ngModel)]="item.proveedor" [compareWith]="compareFnProv"
+                        class="form-control form-sm" required>
+                        <option *ngFor="let proveedor of proveedor" [ngValue]="proveedor">[{{proveedor.nombre}}]
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls">
+                    <label>Seleccione producto</label>
+
+                    <select name="producto" required [(ngModel)]="item.producto" [compareWith]="compareFnPro"
+                        class="form-control form-sm" required>
+                        <option *ngFor="let producto of producto" [ngValue]="producto">[{{producto.nombre}}]
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Descripción del repuesto</label>
+                    <input oninvalid="setCustomValidity('El campo descripción es obligatorio')"
+                        oninput="setCustomValidity('')" minlength="3" [(ngModel)]="item.descripcion"
+                        class="form-control" name="nombre" id="Descripción" type="text"
+                        placeholder="Ingrese descripción del repuesto" required="required"
+                        title="Ingrese descripción del repuesto">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <br>
+            <button type="submit" (click)="accion(form)" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,80 @@
+<fieldset>
+    <h4>Listado de Repuestos</h4>
+    <hr>
+</fieldset>
+
+<label>
+    <a #collapse data-toggle="collapse" href="#collapseModelo" role="button" aria-expanded="false"
+        aria-controls="collapseModelo">
+        Buscar Repuesto del Vehículo Policial
+    </a>
+</label>
+<div class="collapse" id="collapseModelo">
+    <div class="card card-body">
+        <app-filtro-repuestos (resultado)="encontrados($event)"></app-filtro-repuestos>
+    </div>
+</div>
+
+
+<table *ngIf="items.length>0 " class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cantidad</th>
+            <th>Repuesto</th>
+            <th>Proveedor</th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td scope="row">{{item.id}} </td>
+            <td>{{item.stock}} </td>
+            <td>{{item.producto.nombre}}</td>
+            <td>{{item.proveedor.nombre}}</td>
+
+
+            <td>
+                <button data-toggle="modal" data-target="#modelId" type="button" (click)="seleccionado(item)"
+                    class="btn btn-primary">
+                    <i class="fas fa-edit    "></i>
+                </button>
+                &nbsp;
+                <button (click)="preEliminar(item)" type="button" class="btn btn-danger">
+                    <i class=" fas fa-trash "></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="items.length ===0 " class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Salir</span>
+    </button>
+    <strong>No hay datos</strong>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ABM Repuestos</h5>
+                <button #close type="button" class="close" data-dismiss="modal" aria-label="Salir">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-abmrepuestos *ngIf="item" [item]="item" (finalizado)="accion($event)"></app-abmrepuestos>
+            </div>
+
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modelId" (click)="nuevo()">
+    <i class="fas fa-plus    "></i>
+    Agregar
+</button>

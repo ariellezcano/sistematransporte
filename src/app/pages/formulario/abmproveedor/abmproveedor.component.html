@@ -1,0 +1,62 @@
+<form #f="ngForm" ngNativeValidate>
+    <div class="row" text="align-items-center">
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese nombre del proveedor</label>
+                    <input oninvalid="setCustomValidity('El campo nombre del proveedor es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.nombre"
+                        class="form-control" id="proveedor" type="text" placeholder="Ingrese proveedor"
+                        required="required" data-validation-required-message="proveedor">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese dirección</label>
+                    <input oninvalid="setCustomValidity('El campo dirección es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.direccion"
+                        class="form-control" id="Dirección" type="text" placeholder="Ingrese dirección"
+                        required="required" data-validation-required-message="Dirección">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese nro. telefónico de contacto</label>
+                    <input oninvalid="setCustomValidity('El campo nro. telefónico es obligatorio')"
+                        oninput="setCustomValidity('')" name="nombre" minlength="3" [(ngModel)]="item.telContacto"
+                        class="form-control" id="telefono" type="number" placeholder="Ingrese nro. teléfono"
+                        required="required" data-validation-required-message="Teléfono">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="control-group">
+                <div class="form-group controls mb-0 pb-2">
+                    <label>Ingrese C.U.I.T del proveedor</label>
+                    <input oninvalid="setCustomValidity('El campo C.U.I.T es obligatorio')"
+                        oninput="setCustomValidity('')" name="cuit" minlength="3" [(ngModel)]="item.cuit"
+                        class="form-control" id="CUIT" type="number" placeholder="Ingrese nro. C.U.I.T"
+                        required="required" data-validation-required-message="C.U.I.T">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+
+        <div class="col-lg-6">
+            <button type="submit" (click)="accion(f)" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+
+</form>
